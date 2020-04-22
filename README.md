@@ -1,2 +1,2 @@
 # Circle-Calculator-Tabris
-A simple circle calculator applicatoin made in tabris
+A simple circle calculator application made in tabris
