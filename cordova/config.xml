@@ -1,0 +1,11 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="me.joshbeatty.circlecalc" version="0.1.0">
+  <name>Circle Calc.</name>
+  <description>
+    Example Tabris.js App
+  </description>
+  <author email="joshuatb6@gmail.com">
+    Josh Beatty
+  </author>
+  <preference name="EnableDeveloperConsole" value="$IS_DEBUG" />
+</widget>
