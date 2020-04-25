@@ -7,4 +7,7 @@
   <author email="joshuatb6@gmail.com">
     Josh Beatty
   </author>
+  <preference name="SplashScreenDelay" value="0" />
+  <preference name="SplashScreen" value="none"/>
+  <icon src="piCon.png" />
 </widget>
