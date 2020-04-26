@@ -7,8 +7,7 @@
   },
   "dependencies": {
     "big.js": "^5.2.2",
-    "tabris": "^3.4.0",
-    "tabris-cli": "^3.4.1"
+    "tabris": "^3.4.0"
   },
   "devDependencies": {
     "eslint": "^6.8.0"
