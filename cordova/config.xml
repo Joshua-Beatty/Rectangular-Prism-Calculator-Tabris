@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="me.joshbeatty.circlecalc" version="1.0.1">
+<widget id="me.joshbeatty.circlecalc" version="1.0.2">
   <name>Circle Calc.</name>
   <description>
     A simple circle calculator app
@@ -9,7 +9,7 @@
   </author>
   <preference name="Orientation" value="portrait" />
   <platform name="ios">
-	<preference name="cordova.plugins.diagnostic.modules" value="" />
+	<preference name="cordova.plugins.diagnostic.modules" value="WIFI CAMERA NOTIFICATIONS MICROPHONE CONTACTS CALENDAR REMINDERS MOTION NFC EXTERNAL_STORAGE" />
 
         <icon src="res/icon/ios/icon-1024.png" width="1024" height="1024"/>
         <icon src="res/icon/ios/icon-small.png" width="29" height="29"/>
