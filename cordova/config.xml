@@ -9,6 +9,8 @@
   </author>
   <preference name="Orientation" value="portrait" />
   <platform name="ios">
+	<preference name="cordova.plugins.diagnostic.modules" value="" />
+
         <icon src="res/icon/ios/icon-1024.png" width="1024" height="1024"/>
         <icon src="res/icon/ios/icon-small.png" width="29" height="29"/>
         <icon src="res/icon/ios/icon-small@2x.png" width="58" height="58"/>
