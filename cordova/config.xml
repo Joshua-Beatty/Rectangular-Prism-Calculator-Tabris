@@ -1,5 +1,8 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="me.joshbeatty.circlecalc" version="1.0.6">
+<widget
+	android-packageName="appinventor.ai_joshuatb6.CircleCalc"
+    ios-CFBundleIdentifier="me.joshbeatty.circlecalc"
+	version="1.0.6">
   <name>Circle Calc.</name>
   <description>
     A simple circle calculator app
