@@ -1,6 +1,6 @@
 const {TextInput, Slider, TextView, contentView, Color, Font} = require('tabris');
 const Big = require('big.js');
-
+                 
 const fontSize = Math.round(window.screen.height / 28) +  "px";
 const fontSizeSlider = '20px';
 console.log(Math.round(window.screen.height / 28) + "px");
