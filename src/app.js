@@ -1,9 +1,9 @@
-const {TextInput, Slider, TextView, contentView, Color} = require('tabris');
+const {TextInput, Slider, TextView, contentView, Color, Font} = require('tabris');
 const Big = require('big.js');
 
-const fontSize = '30px';
+const fontSize = Math.round(window.screen.height / 28) +  "px";
 const fontSizeSlider = '20px';
-
+console.log(Math.round(window.screen.height / 28) + "px");
 let radius = Big(0);
 let diameter = Big(0);
 let area = Big(0);
@@ -45,6 +45,8 @@ changeFunction = function(n, id) {
 			circumferenceTextinput.text = radius.times(pi.times(2)).toFixed(percision)* 1;
 		}
 	} else {
+		idG = null;
+		nG = null;
 radiusTextinput.text = "";
 diameterTextinput.text = "";
 areaTextinput.text = "";
