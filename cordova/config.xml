@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="CircleCalc" android-packageName="appinventor.ai_joshuatb6.CircleCalc" ios-CFBundleIdentifier="me.joshbeatty.circlecalc" version="1.1">
-  <name>Circle Calc.</name>
+<widget id="RectangularCalc" android-packageName="me.joshbeatty.RectangularCalc" ios-CFBundleIdentifier="me.joshbeatty.RectangularCalc" version="0.1">
+  <name>Rectangular Prism Calculator</name>
   <description>
     A simple circle calculator app
   </description>

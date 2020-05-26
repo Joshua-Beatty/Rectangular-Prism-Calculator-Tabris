@@ -1,152 +1,139 @@
-const {TextInput, Slider, TextView, contentView, Color, Font} = require('tabris');
+const {TextInput, Slider, TextView, contentView, Color, Font, sizeMeasurement} = require('tabris');
 const Big = require('big.js');
                      
 const fontSize = Math.round(window.screen.height / 28) +  "px";
 const fontSizeSlider = '20px';
 console.log(Math.round(window.screen.height / 28) + "px");
-let radius = Big(0);
-let diameter = Big(0);
-let area = Big(0);
-let circumference = Big(0);
-let fullPi = "3.1415192653589793238";
-let pi = Big(3.14);
+
+let width = Big(0);
+let height = Big(0);
+let length = Big(0);
 let percision = 4;
 let changing = false;
 let messageColorNew = new Color(120, 120, 120);
 
-let idG = null;
-let nG = null;
 
-changeFunction = function(n, id) {
-	if(n != ""){
-		idG = id;
-		nG = n;
-		switch(id) {
-			case 1:
-			radius = Big(n);
-			break;
-			case 2:
-			radius = Big(n).div(2);
-			break;
-			case 3:
-			radius = Big(n).div(pi).sqrt();
-			break;
-			case 4:
-			radius = Big(n).div(pi.times(2));
-			break;
-		}
-		if(id != 1){
-			radiusTextinput.text = radius.toFixed(percision) * 1;
-		}if(id != 2){
-			diameterTextinput.text = radius.times(2).toFixed(percision)* 1;
-		}if(id != 3){
-			areaTextinput.text = radius.pow(2).times(pi).toFixed(percision)* 1;
-		}if(id != 4){
-			circumferenceTextinput.text = radius.times(pi.times(2)).toFixed(percision)* 1;
-		}
-	} else {
-		idG = null;
-		nG = null;
-radiusTextinput.text = "";
-diameterTextinput.text = "";
-areaTextinput.text = "";
-circumferenceTextinput.text = "";
 
+changeValues = function(n, id) {
+	if(!n){
+		n = 0;
 	}
+	switch(id) {
+		case 1:
+			width = Big(n);
+		break;
+		case 2:
+			height = Big(n);
+		break;
+		case 3:
+			length = Big(n);
+		break;
+   	} 
+	changeAnswers()
 }
 
-changePi = function(n){
-	if(n > 1) {
-		n = Number(n) + 1
-	}
-	pi = Big(fullPi.substr(0, n));
-	piText.text = `Pi: ${pi}`;
-	if(nG){
-		changeFunction(nG, idG);
-	}
+changeAnswers = function(){
+	
+	volumeTextView.text = width.times(height).times(length).toFixed(percision) * 1
+	surfaceAreaTextView.text = width.times(height).plus(width.times(length).plus(height.times(length))).times(2).toFixed(percision) * 1
+	diagonalTextView.text = width.pow(2).plus(height.pow(2).plus(length.pow(2))).sqrt().toFixed(percision) * 1
 }
-
 changePerc = function(n){
 	percision = Number(n);
 	percisionText.text = `Percision: ${percision}`;
-	if(nG){
-		changeFunction(nG, idG);
-	}
+	changeAnswers();
 }
+
+async function handleDrawing({target: canvas, width, height}) {
+  	const measureConfigs = createMeasureConfigs(width);
+	const measurements = await sizeMeasurement.measureTexts(diagonalTextView);
+	console.log(measurements);
+}
+//contentView.append(<Canvas stretch onResize={handleDrawing}/>);
+
 new TextView({
-	centerX: true, top: '5%',
+	centerX: true, top: '3%',
 	font: fontSize,
-	text: "Radius",
+	text: "Width",
 }).appendTo(contentView);
 
-const radiusTextinput = new TextInput({
-	top: '12%', left: '20%', right: '20%',
+const widthTextinput = new TextInput({
+	top: '10%', left: '20%', right: '20%',
 	font: fontSizeSlider,
-	message: 'Radius',
+	message: 'Width',
 	keyboard: 'decimal',
 	floatMessage: false,
 	messageColor: messageColorNew,
-}).onInput( ({text}) => changeFunction(`${text}`, 1) ).appendTo(contentView);
+}).onInput( ({text}) => changeValues(`${text}`, 1) ).appendTo(contentView);
 
 
 new TextView({
-	centerX: true, top: '22%',
+	centerX: true, top: '17%',
 	font: fontSize,
-	text: "Diameter",
+	text: "Height",
 }).appendTo(contentView);
 
-const diameterTextinput = new TextInput({
-	top: '29%', left: '20%', right: '20%',
+const heightTextinput = new TextInput({
+	top: '24%', left: '20%', right: '20%',
 	font: fontSizeSlider,
-	message: 'Diameter',
+	message: 'Height',
 	keyboard: 'decimal',
 	floatMessage: false,
 	messageColor: messageColorNew,
-}).onInput(({text}) => changeFunction(`${text}`, 2)).appendTo(contentView);
+}).onInput(({text}) => changeValues(`${text}`, 2)).appendTo(contentView);
 
 new TextView({
-	centerX: true, top: '39%',
+	centerX: true, top: '31%',
 	font: fontSize,
-	text: "Area",
+	text: "Length",
 }).appendTo(contentView);
 
-const areaTextinput = new TextInput({
-	top: '46%', left: '20%', right: '20%',
+const lengthTextinput = new TextInput({
+	top: '38%', left: '20%', right: '20%',
 	font: fontSizeSlider,
-	message: 'Area',
+	message: 'Length',
 	keyboard: 'decimal',
 	floatMessage: false,
 	messageColor: messageColorNew,
-}).onInput(({text}) => changeFunction(`${text}`, 3)).appendTo(contentView);
+}).onInput(({text}) => changeValues(`${text}`, 3)).appendTo(contentView);
+
 
 new TextView({
-	centerX: true, top: '56%',
+	centerX: true, top: '45.7%',
 	font: fontSize,
-	text: "Circumference",
+	text: "Volume",
 }).appendTo(contentView);
 
-const circumferenceTextinput = new TextInput({
-	top: '63%', left: '20%', right: '20%',
-	font: fontSizeSlider,
-	message: 'Circumference',
-	keyboard: 'decimal',
-	floatMessage: false,
-	messageColor: messageColorNew,
-}).onInput(({text}) => changeFunction(`${text}`, 4)).appendTo(contentView);
-
-const piText = new TextView({
-	centerX: true, top: '74%',
+volumeTextView = new TextView({
+	centerX: true, top: '51.42%',
 	font: fontSize,
-	text: `Pi: ${pi}`,
+	text: "0",
 }).appendTo(contentView);
 
-new Slider({
-	top: '79%',
-	left: '15%', right: '15%',
-	maximum: 15,
-	minimum: 1,
-	selection: 2,
-}).onSelect(({selection}) => changePi(`${selection}`)).appendTo(contentView);
+new TextView({
+	centerX: true, top: '59.1%',
+	font: fontSize,
+	text: "Surface Area",
+}).appendTo(contentView);
+
+surfaceAreaTextView = new TextView({
+	centerX: true, top: '64.9%',
+	font: fontSize,
+	text: "0",
+}).appendTo(contentView);
+
+new TextView({
+	centerX: true, top: '72.6%',
+	font: fontSize,
+	text: "Diagonal Length",
+}).appendTo(contentView);
+
+diagonalTextView = new TextView({
+	centerX: true, top: '78.3%',
+	font: fontSize,
+	text: "0",
+}).appendTo(contentView);
+
 
 const percisionText = new TextView({
 	centerX: true, top: '85%',
