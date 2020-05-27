@@ -1,8 +1,8 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="RectangularCalc" android-packageName="me.joshbeatty.RectangularCalc" ios-CFBundleIdentifier="me.joshbeatty.RectangularCalc" version="0.1.1">
-  <name>Rectangular Prism Calculator</name>
+<widget id="PrismCalc" android-packageName="me.joshbeatty.PrismCalc" ios-CFBundleIdentifier="me.joshbeatty.PrismCalc" version="0.1">
+  <name>Prism Calculator</name>
   <description>
-    A simple circle calculator app
+    A simple prism calculator app
   </description>
   <author email="joshuatb6@gmail.com">
     Josh Beatty
