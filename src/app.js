@@ -1,150 +1,57 @@
-const {TextInput, Slider, TextView, contentView, Color, Font, sizeMeasurement} = require('tabris');
-const Big = require('big.js');
-                     
-const fontSize = Math.round(window.screen.height / 28) +  "px";
-const fontSizeSlider = '20px';
-console.log(Math.round(window.screen.height / 28) + "px");
+const {TextInput, Slider, TextView, contentView, Color, Font, sizeMeasurement, NavigationView, Page, drawer, Button, Canvas} = require('tabris');
 
-let width = Big(0);
-let height = Big(0);
-let length = Big(0);
-let percision = 4;
-let changing = false;
-let messageColorNew = new Color(120, 120, 120);
+const fontSizeNavigation = '25px';
+const fontSizeNavigationTitle = '35px';
 
+rectangularPrismPage = new Page({title: 'Rectangular Prism'});
+const rect = require('./rect.js');
+rect.loadPage(rectangularPrismPage);
 
+helpPage = new Page({title: 'Support'});
+const help = require('./help.js');
+help.loadPage(helpPage);
 
-changeValues = function(n, id) {
-	if(!n){
-		n = 0;
-	}
-	switch(id) {
-		case 1:
-			width = Big(n);
-		break;
-		case 2:
-			height = Big(n);
-		break;
-		case 3:
-			length = Big(n);
-		break;
-   	} 
-	changeAnswers()
+let pages = [rectangularPrismPage, helpPage] 
+
+navigation = new NavigationView({layoutData: 'stretch', drawerActionVisible: true}).appendTo(contentView);
+navigation.append(pages[0]);
+
+drawer.append(
+	new TextView({
+		centerX: true, top: '1%',
+		font: fontSizeNavigationTitle,
+		text: "Navigation",
+	})
+);
+
+newRect = function(attributes, color){
+	return new Canvas(attributes)
+	.onResize(({target: canvas, width, height}) => {
+		const context = canvas.getContext('2d', width, height);
+		context.fillStyle = color;
+		context.fillRect(0, 0, width, height);
+	})
 }
 
-changeAnswers = function(){
-	
-	volumeTextView.text = width.times(height).times(length).toFixed(percision) * 1
-	surfaceAreaTextView.text = width.times(height).plus(width.times(length).plus(height.times(length))).times(2).toFixed(percision) * 1
-	diagonalTextView.text = width.pow(2).plus(height.pow(2).plus(length.pow(2))).sqrt().toFixed(percision) * 1
-}
-changePerc = function(n){
-	percision = Number(n);
-	percisionText.text = `Percision: ${percision}`;
-	changeAnswers();
-}
 
-async function handleDrawing({target: canvas, width, height}) {
-  	const measureConfigs = createMeasureConfigs(width);
-	const measurements = await sizeMeasurement.measureTexts(diagonalTextView);
-	console.log(measurements);
-}
-//contentView.append(<Canvas stretch onResize={handleDrawing}/>);
+hLAttributes = {top:'prev()', height:1, right:0, left:0};
+hLColor = new Color(200,200,200);
 
-new TextView({
-	centerX: true, top: '3%',
-	font: fontSize,
-	text: "Width",
-}).appendTo(contentView);
+newRect(hLAttributes, hLColor).appendTo(drawer);
 
-const widthTextinput = new TextInput({
-	top: '10%', left: '20%', right: '20%',
-	font: fontSizeSlider,
-	message: 'Width',
-	keyboard: 'decimal',
-	floatMessage: false,
-	messageColor: messageColorNew,
-}).onInput( ({text}) => changeValues(`${text}`, 1) ).appendTo(contentView);
+pages.forEach(function (item, index) {
+	console.log(item, index);
+	new Button({
+		text: item.title,
+		font: fontSizeNavigation,
+		top:'prev()', right:0, left:0,
+		style:'text'
+	}).onSelect(function(){
+		navigation.pages().detach();
+		navigation.append(pages[index]);
+		drawer.close();
+	}).appendTo(drawer);
 
+	newRect(hLAttributes, hLColor).appendTo(drawer);
+});
 
-new TextView({
-	centerX: true, top: '17%',
-	font: fontSize,
-	text: "Height",
-}).appendTo(contentView);
-
-const heightTextinput = new TextInput({
-	top: '24%', left: '20%', right: '20%',
-	font: fontSizeSlider,
-	message: 'Height',
-	keyboard: 'decimal',
-	floatMessage: false,
-	messageColor: messageColorNew,
-}).onInput(({text}) => changeValues(`${text}`, 2)).appendTo(contentView);
-
-new TextView({
-	centerX: true, top: '31%',
-	font: fontSize,
-	text: "Length",
-}).appendTo(contentView);
-
-const lengthTextinput = new TextInput({
-	top: '38%', left: '20%', right: '20%',
-	font: fontSizeSlider,
-	message: 'Length',
-	keyboard: 'decimal',
-	floatMessage: false,
-	messageColor: messageColorNew,
-}).onInput(({text}) => changeValues(`${text}`, 3)).appendTo(contentView);
-
-
-new TextView({
-	centerX: true, top: '45.7%',
-	font: fontSize,
-	text: "Volume",
-}).appendTo(contentView);
-
-volumeTextView = new TextView({
-	centerX: true, top: '51.42%',
-	font: fontSize,
-	text: "0",
-}).appendTo(contentView);
-
-new TextView({
-	centerX: true, top: '59.1%',
-	font: fontSize,
-	text: "Surface Area",
-}).appendTo(contentView);
-
-surfaceAreaTextView = new TextView({
-	centerX: true, top: '64.9%',
-	font: fontSize,
-	text: "0",
-}).appendTo(contentView);
-
-new TextView({
-	centerX: true, top: '72.6%',
-	font: fontSize,
-	text: "Diagonal Length",
-}).appendTo(contentView);
-
-diagonalTextView = new TextView({
-	centerX: true, top: '78.3%',
-	font: fontSize,
-	text: "0",
-}).appendTo(contentView);
-
-
-const percisionText = new TextView({
-	centerX: true, top: '85%',
-	font: fontSize,
-	text: `Percision: ${percision}`,
-}).appendTo(contentView);
-
-new Slider({
-	top: '90%',
-	left: '15%', right: '15%',
-	maximum: 15,
-	minimum: 0,
-	selection: percision,
-}).onSelect(({selection}) => changePerc(`${selection}`)).appendTo(contentView);
