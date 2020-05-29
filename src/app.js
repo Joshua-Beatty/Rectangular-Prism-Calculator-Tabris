@@ -13,7 +13,13 @@ help.loadPage(helpPage);
 
 let pages = [rectangularPrismPage, helpPage] 
 
-navigation = new NavigationView({layoutData: 'stretch', drawerActionVisible: true}).appendTo(contentView);
+navigation = new NavigationView({
+	layoutData: 'stretch', 
+	drawerActionVisible: true,
+	titleTextColor: new Color(255, 255, 255),
+	toolbarColor: new Color(255, 160, 0),
+	actionColor: new Color(255, 255, 255)
+}).appendTo(contentView);
 navigation.append(pages[0]);
 
 drawer.append(
@@ -40,7 +46,6 @@ hLColor = new Color(200,200,200);
 newRect(hLAttributes, hLColor).appendTo(drawer);
 
 pages.forEach(function (item, index) {
-	console.log(item, index);
 	new Button({
 		text: item.title,
 		font: fontSizeNavigation,
