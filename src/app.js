@@ -39,7 +39,6 @@ newRect = function(attributes, color){
 	})
 }
 
-
 hLAttributes = {top:'prev()', height:1, right:0, left:0};
 hLColor = new Color(200,200,200);
 
