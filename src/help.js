@@ -16,6 +16,11 @@ loadPage = function(newPage){
 	}).onSelect(function(){
 		app.launch('mailto:joshbeatty20@gmail.com')
 	}).appendTo(newPage);
+	new TextView({
+		centerX: true, bottom: '50%',
+		font: fontSizes.tiny,
+		text: "V 1.0",
+	}).appendTo(newPage);
 }
 
 module.exports = {

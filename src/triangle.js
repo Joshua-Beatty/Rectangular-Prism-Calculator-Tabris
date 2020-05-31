@@ -3,125 +3,141 @@ const {TextInput, Slider, TextView, contentView, Color, Font, sizeMeasurement, N
 const fontSizes = require('./fontSizes.js');
 
 loadPage = function(newPage){
-	let width = Big(0);
+	let sideA = Big(0);
+	let sideB = Big(0);
+	let sideC = Big(0);
 	let height = Big(0);
-	let length = Big(0);
 	let percision = 4;
 	let changing = false;
 	let messageColorNew = new Color(120, 120, 120);
 
-	changeValuesRect = function(n, id) {
+	changeValuesTriangle = function(n, id) {
 		if(!n){
 			n = 0;
 		}
 		switch(id) {
 			case 1:
-			width = Big(n);
+			sideA = Big(n);
 			break;
 			case 2:
-			height = Big(n);
+			sideB = Big(n);
 			break;
 			case 3:
-			length = Big(n);
+			sideC = Big(n);
+			break;
+			case 4:
+			height = Big(n);
 			break;
 		} 
-		changeAnswersRect()
+		changeAnswersTriangle()
 	}
 
-	changeAnswersRect = function(){
+	changeAnswersTriangle = function(){
+		volumeTextView.text = height.times(1/4).times((
+		sideA.pow(4).times(-1)
+		.plus((sideA.times(sideB)).pow(2).times(2))
+		.plus((sideA.times(sideC)).pow(2).times(2))
+		.plus(sideB.pow(4).times(-1))
+		.plus((sideB.times(sideC)).pow(2).times(2))
+		.plus(sideC.pow(4).times(-1))
+		).sqrt()).toFixed(percision) * 1;
 
-		volumeTextView.text = width.times(height).times(length).toFixed(percision) * 1
-		surfaceAreaTextView.text = width.times(height).plus(width.times(length).plus(height.times(length))).times(2).toFixed(percision) * 1
-		diagonalTextView.text = width.pow(2).plus(height.pow(2).plus(length.pow(2))).sqrt().toFixed(percision) * 1
+		let p = sideA.plus(sideB).plus(sideC).times(.5);
+		surfaceAreaTextView.text = p.times(p.minus(sideA)).times(p.minus(sideB)).times(p.minus(sideC)).sqrt().times(2).plus(sideA.times(height)).plus(sideB.times(height)).plus(sideC.times(height))
+		.toFixed(percision) * 1;
 	}
-	changePercRect = function(n){
+	changePercTriangle = function(n){
 		percision = Number(n);
 		percisionText.text = `Percision: ${percision}`;
-		changeAnswersRect();
+		changeAnswersTriangle();
 	}
 
 	new TextView({
 		centerX: true, top: '1%',
 		font: fontSizes.textView,
-		text: "Width",
+		text: "Side A",
 	}).appendTo(newPage);
 
-	const widthTextinput = new TextInput({
+	const sideATextinput = new TextInput({
 		top: '7%', left: '20%', right: '20%',
 		font: fontSizes.textInput,
-		message: 'Width',
+		message: 'Side A',
 		keyboard: 'decimal',
 		floatMessage: false,
 		messageColor: messageColorNew,
-	}).onInput( ({text}) => changeValuesRect(`${text}`, 1) ).appendTo(newPage);
+	}).onInput( ({text}) => changeValuesTriangle(`${text}`, 1) ).appendTo(newPage);
 
 
 	new TextView({
 		centerX: true, top: '15%',
 		font: fontSizes.textView,
+		text: "Side B",
+	}).appendTo(newPage);
+
+	const sideBTextinput = new TextInput({
+		top: '21%', left: '20%', right: '20%',
+		font: fontSizes.textInput,
+		message: 'Side B',
+		keyboard: 'decimal',
+		floatMessage: false,
+		messageColor: messageColorNew,
+	}).onInput(({text}) => changeValuesTriangle(`${text}`, 2)).appendTo(newPage);
+
+	new TextView({
+		centerX: true, top: '29%',
+		font: fontSizes.textView,
+		text: "Side C",
+	}).appendTo(newPage);
+
+	const sideCTextinput = new TextInput({
+		top: '35%', left: '20%', right: '20%',
+		font: fontSizes.textInput,
+		message: 'Side C',
+		keyboard: 'decimal',
+		floatMessage: false,
+		messageColor: messageColorNew,
+	}).onInput(({text}) => changeValuesTriangle(`${text}`, 3)).appendTo(newPage);
+
+	new TextView({
+		centerX: true, top: '43%',
+		font: fontSizes.textView,
 		text: "Height",
 	}).appendTo(newPage);
 
 	const heightTextinput = new TextInput({
-		top: '21%', left: '20%', right: '20%',
+		top: '49%', left: '20%', right: '20%',
 		font: fontSizes.textInput,
 		message: 'Height',
 		keyboard: 'decimal',
 		floatMessage: false,
 		messageColor: messageColorNew,
-	}).onInput(({text}) => changeValuesRect(`${text}`, 2)).appendTo(newPage);
-
-	new TextView({
-		centerX: true, top: '29%',
-		font: fontSizes.textView,
-		text: "Length",
-	}).appendTo(newPage);
-
-	const lengthTextinput = new TextInput({
-		top: '35%', left: '20%', right: '20%',
-		font: fontSizes.textInput,
-		message: 'Length',
-		keyboard: 'decimal',
-		floatMessage: false,
-		messageColor: messageColorNew,
-	}).onInput(({text}) => changeValuesRect(`${text}`, 3)).appendTo(newPage);
+	}).onInput(({text}) => changeValuesTriangle(`${text}`, 4)).appendTo(newPage);
 
 
 	new TextView({
-		centerX: true, top: '45.7%',
+		centerX: true, top: '57%',
 		font: fontSizes.textView,
 		text: "Volume",
 	}).appendTo(newPage);
 
 	volumeTextView = new TextView({
-		centerX: true, top: '51.42%',
+		centerX: true, top: '63%',
 		font: fontSizes.textView,
 		text: "0",
 	}).appendTo(newPage);
 
 	new TextView({
-		centerX: true, top: '59.1%',
+		centerX: true, top: '71%',
 		font: fontSizes.textView,
 		text: "Surface Area",
 	}).appendTo(newPage);
 
 	surfaceAreaTextView = new TextView({
-		centerX: true, top: '64.9%',
+		centerX: true, top: '77%',
 		font: fontSizes.textView,
 		text: "0",
 	}).appendTo(newPage);
 
-	new TextView({
-		centerX: true, top: '72.6%',
-		font: fontSizes.textView,
-		text: "Diagonal Length",
-	}).appendTo(newPage);
-
-	diagonalTextView = new TextView({
-		centerX: true, top: '78.3%',
-		font: fontSizes.textView,
-		text: "0",
-	}).appendTo(newPage);
 
 
 	const percisionText = new TextView({
@@ -136,7 +152,7 @@ loadPage = function(newPage){
 		maximum: 15,
 		minimum: 0,
 		selection: percision,
-	}).onSelect(({selection}) => changePercRect(`${selection}`)).appendTo(newPage);
+	}).onSelect(({selection}) => changePercTriangle(`${selection}`)).appendTo(newPage);
 }
 module.exports = {
 	loadPage: loadPage

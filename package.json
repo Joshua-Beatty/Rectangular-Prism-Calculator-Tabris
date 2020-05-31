@@ -6,7 +6,7 @@
     "start": "tabris serve -a"
   },
   "dependencies": {
-    "big.js": "^5.2.2",
+    "decimal.js": "^10.2.0",
     "tabris": "^3.5.0"
   },
   "devDependencies": {

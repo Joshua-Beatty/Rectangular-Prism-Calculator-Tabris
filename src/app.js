@@ -2,8 +2,7 @@ const {TextInput, Slider, TextView, contentView, Color, Font, sizeMeasurement, N
 
 const fontSizeNavigation = '25px';
 const fontSizeNavigationTitle = '35px';
-
-
+navBarColor = new Color(255, 160, 0)
 newRect = function(attributes, color){
 	return new Canvas(attributes)
 	.onResize(({target: canvas, width, height}) => {
@@ -13,33 +12,47 @@ newRect = function(attributes, color){
 	})
 }
 
-//statusBar.background = new Color(255, 160, 0);
-statusBar.background = new Color(0, 0, 0, 0);
+statusBar.background =  Color.transparent;
 statusBar.displayMode = 'float';
 statusBar.theme = 'light';
 devTools.hideUi();
+
+//loading pages--------------
 
 rectangularPrismPage = new Page({title: 'Rectangular Prism'});
 const rect = require('./rect.js');
 rect.loadPage(rectangularPrismPage);
 
+triangularPrismPage = new Page({title: 'Trianglular Prism'});
+const triangle = require('./triangle.js');
+triangle.loadPage(triangularPrismPage);
+
+cylinderPage = new Page({title: 'Cylinder'});
+const cylinder = require('./cylinder.js');
+cylinder.loadPage(cylinderPage);
+
+spherePage = new Page({title: 'Sphere'});
+const sphere = require('./sphere.js');
+sphere.loadPage(spherePage);
+
 helpPage = new Page({title: 'Support'});
 const help = require('./help.js');
 help.loadPage(helpPage);
 
-let pages = [rectangularPrismPage, helpPage] 
+let pages = [rectangularPrismPage, triangularPrismPage, cylinderPage, spherePage, helpPage] 
 
+//--------------------------
 navigation = new NavigationView({
 	layoutData: 'stretch', 
 	top: statusBar.height,
 	drawerActionVisible: true,
-	titleTextColor: new Color(0, 0, 0),
-	toolbarColor: new Color(255, 160, 0),
-	actionColor: new Color(0, 0, 0)
+	titleTextColor: Color.black,
+	toolbarColor: navBarColor,
+	actionColor: Color.black
 }).appendTo(contentView);
 navigation.append(pages[0]);
 
-newRect({top:0, height:statusBar.height, right:0, left:0}, new Color(255, 160, 0)).appendTo(contentView);
+newRect({top:0, height:statusBar.height, right:0, left:0}, navBarColor).appendTo(contentView);
 
 drawer.append(
 	new TextView({
@@ -47,7 +60,7 @@ drawer.append(
 		font: fontSizeNavigationTitle,
 		text: "Navigation",
 	})
-);
+	);
 
 
 hLAttributes = {top:statusBar.height+navigation.toolbarHeight-1, height:1, right:0, left:0};

@@ -1,5 +1,6 @@
 module.exports = {
-	textView: "32px",
+	textView: "25px",
 	textInput: '20px',
 	paragraph: "30px",
+	tiny: "15px",
 };
