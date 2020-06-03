@@ -31,14 +31,14 @@ loadPage = function(newPage){
 				break;
 			}
 			if(id != 1){
-				radiusTextinput.text = radius.toFixed(percision) * 1;
+				radiusTextinputCylinder.text = radius.toFixed(percision) * 1;
 			}if(id != 2){
-				baseTextinput.text = radius.pow(2).times(pi).toFixed(percision)* 1;
+				baseTextinputCylinder.text = radius.pow(2).times(pi).toFixed(percision)* 1;
 			}
-			surfaceText.text = radius.pow(2).times(pi).times(2).plus(radius.times(2).times(pi).times(height)).toFixed(percision)* 1;
-			areaText.text = radius.pow(2).times(pi).times(height).toFixed(percision)* 1;
+			surfaceTextCylinder.text = radius.pow(2).times(pi).times(2).plus(radius.times(2).times(pi).times(height)).toFixed(percision)* 1;
+			areaTextCylinder.text = radius.pow(2).times(pi).times(height).toFixed(percision)* 1;
 		} else {
-			areaText.text = 0;
+			areaTextCylinder.text = 0;
 		}
 	}
 
@@ -67,7 +67,7 @@ loadPage = function(newPage){
 		text: "Radius",
 	}).appendTo(newPage);
 
-	const radiusTextinput = new TextInput({
+	const radiusTextinputCylinder = new TextInput({
 		top: '10%', left: '20%', right: '20%',
 		font: fontSizes.textInput,
 		message: 'Radius',
@@ -82,7 +82,7 @@ loadPage = function(newPage){
 		text: "Base Area",
 	}).appendTo(newPage);
 
-	const baseTextinput = new TextInput({
+	const baseTextinputCylinder = new TextInput({
 		top: '23%', left: '20%', right: '20%',
 		font: fontSizes.textInput,
 		message: 'Base Area',
@@ -112,7 +112,7 @@ loadPage = function(newPage){
 		text: "Volume",
 	}).appendTo(newPage);
 
-	const areaText = new TextView({
+	const areaTextCylinder = new TextView({
 		centerX: true,
 		top: '49%',
 		font: fontSizes.textView,
@@ -125,7 +125,7 @@ loadPage = function(newPage){
 		text: "Surface Area",
 	}).appendTo(newPage);
 
-	const surfaceText = new TextView({
+	const surfaceTextCylinder = new TextView({
 		centerX: true,
 		top: '63%', 
 		font: fontSizes.textView,

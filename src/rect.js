@@ -29,16 +29,16 @@ loadPage = function(newPage){
 	}
 
 	changeAnswersRect = function(){
-
-		volumeTextView.text = width.times(height).times(length).toFixed(percision) * 1
-		surfaceAreaTextView.text = width.times(height).plus(width.times(length).plus(height.times(length))).times(2).toFixed(percision) * 1
-		diagonalTextView.text = width.pow(2).plus(height.pow(2).plus(length.pow(2))).sqrt().toFixed(percision) * 1
+		volumeTextViewRect.text = width.times(height).times(length).toFixed(percision) * 1
+		surfaceAreaTextViewRect.text = width.times(height).plus(width.times(length).plus(height.times(length))).times(2).toFixed(percision) * 1
+		diagonalTextViewRect.text = width.pow(2).plus(height.pow(2).plus(length.pow(2))).sqrt().toFixed(percision) * 1
 	}
 	changePercRect = function(n){
 		percision = Number(n);
 		percisionText.text = `Percision: ${percision}`;
 		changeAnswersRect();
 	}
+	
 
 	new TextView({
 		centerX: true, top: '1%',
@@ -93,7 +93,7 @@ loadPage = function(newPage){
 		text: "Volume",
 	}).appendTo(newPage);
 
-	volumeTextView = new TextView({
+	volumeTextViewRect = new TextView({
 		centerX: true, top: '51.42%',
 		font: fontSizes.textView,
 		text: "0",
@@ -105,7 +105,7 @@ loadPage = function(newPage){
 		text: "Surface Area",
 	}).appendTo(newPage);
 
-	surfaceAreaTextView = new TextView({
+	surfaceAreaTextViewRect = new TextView({
 		centerX: true, top: '64.9%',
 		font: fontSizes.textView,
 		text: "0",
@@ -117,7 +117,7 @@ loadPage = function(newPage){
 		text: "Diagonal Length",
 	}).appendTo(newPage);
 
-	diagonalTextView = new TextView({
+	diagonalTextViewRect = new TextView({
 		centerX: true, top: '78.3%',
 		font: fontSizes.textView,
 		text: "0",

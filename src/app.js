@@ -1,4 +1,4 @@
-const {TextInput, Slider, TextView, contentView, Color, Font, sizeMeasurement, NavigationView, Page, drawer, Button, Canvas, statusBar, devTools} = require('tabris');
+const {TextInput, Slider, TextView, contentView, Color, Font, sizeMeasurement, NavigationView, Page, drawer, Button, Canvas, statusBar, devTools, Action, AlertDialog} = require('tabris');
 
 const fontSizeNavigation = '25px';
 const fontSizeNavigationTitle = '35px';
@@ -27,6 +27,14 @@ triangularPrismPage = new Page({title: 'Trianglular Prism'});
 const triangle = require('./triangle.js');
 triangle.loadPage(triangularPrismPage);
 
+hexPrismPage = new Page({title: 'Hexagonal Prism'});
+const hex = require('./hex.js');
+hex.loadPage(hexPrismPage);
+
+pentPrismPage = new Page({title: 'Pentagonal Prism'});
+const pent = require('./pent.js');
+pent.loadPage(pentPrismPage);
+
 cylinderPage = new Page({title: 'Cylinder'});
 const cylinder = require('./cylinder.js');
 cylinder.loadPage(cylinderPage);
@@ -39,8 +47,7 @@ helpPage = new Page({title: 'Support'});
 const help = require('./help.js');
 help.loadPage(helpPage);
 
-let pages = [rectangularPrismPage, triangularPrismPage, cylinderPage, spherePage, helpPage] 
-
+let pages = [rectangularPrismPage, triangularPrismPage, hexPrismPage, pentPrismPage, cylinderPage, spherePage, helpPage]
 //--------------------------
 navigation = new NavigationView({
 	layoutData: 'stretch', 
@@ -70,17 +77,70 @@ newRect(hLAttributes, hLColor).appendTo(drawer);
 
 hLAttributes = {top:'prev()', height:1, right:0, left:0};
 pages.forEach(function (item, index) {
-	new Button({
-		text: item.title,
-		font: fontSizeNavigation,
-		top:'prev()', right:0, left:0,
-		style:'text'
-	}).onSelect(function(){
-		navigation.pages().detach();
-		navigation.append(pages[index]);
-		drawer.close();
-	}).appendTo(drawer);
+	if(index == 2){
+		new Button({
+			text: item.title,
+			font: fontSizeNavigation,
+			top:'prev()', right:0, left:0,
+			style:'text'
+		}).onSelect(function(){
+			navigation.pages().detach();
+			navigation.append(pages[index]);
+			drawer.close();
+			info.appendTo(navigation);
+			alert = function(){
+				new AlertDialog({
+					title: 'Right REGULAR Hexagonal Prism Only',
+					buttons: {ok: 'OK'}
+				}).open();
+			}
+		}).appendTo(drawer);
+	}else if(index == 3){
+		new Button({
+			text: item.title,
+			font: fontSizeNavigation,
+			top:'prev()', right:0, left:0,
+			style:'text'
+		}).onSelect(function(){
+			navigation.pages().detach();
+			navigation.append(pages[index]);
+			drawer.close();
+			info.appendTo(navigation);
+			alert = function(){
+				new AlertDialog({
+					title: 'Right REGULAR Pentagonal Prism Only',
+					buttons: {ok: 'OK'}
+				}).open();
+			}
+		}).appendTo(drawer);
+	}
+	else{
+		new Button({
+			text: item.title,
+			font: fontSizeNavigation,
+			top:'prev()', right:0, left:0,
+			style:'text'
+		}).onSelect(function(){
+			navigation.pages().detach();
+			navigation.append(pages[index]);
+			drawer.close();
+			info.detach();
+		}).appendTo(drawer);
+	}
 
 	newRect(hLAttributes, hLColor).appendTo(drawer);
 });
+
+let infoText = ''
+info = new Action({
+	title: 'Settings',
+	image: '/info.png'
+}).onSelect(() => alert());
+
+let alert = function(){
+	new AlertDialog({
+		title: 'Document saved',
+		buttons: {ok: 'OK'}
+	}).open();
+}
 

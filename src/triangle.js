@@ -33,18 +33,23 @@ loadPage = function(newPage){
 	}
 
 	changeAnswersTriangle = function(){
-		volumeTextView.text = height.times(1/4).times((
-		sideA.pow(4).times(-1)
-		.plus((sideA.times(sideB)).pow(2).times(2))
-		.plus((sideA.times(sideC)).pow(2).times(2))
-		.plus(sideB.pow(4).times(-1))
-		.plus((sideB.times(sideC)).pow(2).times(2))
-		.plus(sideC.pow(4).times(-1))
-		).sqrt()).toFixed(percision) * 1;
+		if(!height.isZero() && !sideA.isZero() && !sideB.isZero() && !sideC.isZero()){
+			volumeTextViewTriangle.text = height.times(1/4).times((
+				sideA.pow(4).times(-1)
+				.plus((sideA.times(sideB)).pow(2).times(2))
+				.plus((sideA.times(sideC)).pow(2).times(2))
+				.plus(sideB.pow(4).times(-1))
+				.plus((sideB.times(sideC)).pow(2).times(2))
+				.plus(sideC.pow(4).times(-1))
+				).sqrt()).toFixed(percision) * 1;
 
-		let p = sideA.plus(sideB).plus(sideC).times(.5);
-		surfaceAreaTextView.text = p.times(p.minus(sideA)).times(p.minus(sideB)).times(p.minus(sideC)).sqrt().times(2).plus(sideA.times(height)).plus(sideB.times(height)).plus(sideC.times(height))
-		.toFixed(percision) * 1;
+			let p = sideA.plus(sideB).plus(sideC).times(.5);
+			surfaceAreaTextViewTriangle.text = p.times(p.minus(sideA)).times(p.minus(sideB)).times(p.minus(sideC)).sqrt().times(2).plus(sideA.times(height)).plus(sideB.times(height)).plus(sideC.times(height))
+			.toFixed(percision) * 1;
+		} else {
+			surfaceAreaTextViewTriangle.text = '0';
+			volumeTextViewTriangle.text = '0';
+		}
 	}
 	changePercTriangle = function(n){
 		percision = Number(n);
@@ -120,7 +125,7 @@ loadPage = function(newPage){
 		text: "Volume",
 	}).appendTo(newPage);
 
-	volumeTextView = new TextView({
+	volumeTextViewTriangle = new TextView({
 		centerX: true, top: '63%',
 		font: fontSizes.textView,
 		text: "0",
@@ -132,7 +137,7 @@ loadPage = function(newPage){
 		text: "Surface Area",
 	}).appendTo(newPage);
 
-	surfaceAreaTextView = new TextView({
+	surfaceAreaTextViewTriangle = new TextView({
 		centerX: true, top: '77%',
 		font: fontSizes.textView,
 		text: "0",

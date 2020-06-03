@@ -36,21 +36,21 @@ loadPage = function(newPage){
 				break;
 			}
 			if(id != 1){
-				radiusTextinput.text = radius.toFixed(percision) * 1;
+				radiusTextinputSphere.text = radius.toFixed(percision) * 1;
 			}if(id != 2){
-				diameterTextinput.text = radius.times(2).toFixed(percision)* 1;
+				diameterTextinputSphere.text = radius.times(2).toFixed(percision)* 1;
 			}if(id != 3){
-				areaTextinput.text = radius.pow(3).times(pi).times(Big(4).div(3)).toFixed(percision)* 1;
+				areaTextinputSphere.text = radius.pow(3).times(pi).times(Big(4).div(3)).toFixed(percision)* 1;
 			}if(id != 4){
-				circumferenceTextinput.text = radius.pow(2).times(4).times(pi).toFixed(percision)* 1;
+				circumferenceTextinputSphere.text = radius.pow(2).times(4).times(pi).toFixed(percision)* 1;
 			}
 		} else {
 			idG = null;
 			nG = null;
-			radiusTextinput.text = "";
-			diameterTextinput.text = "";
-			areaTextinput.text = "";
-			circumferenceTextinput.text = "";
+			radiusTextinputSphere.text = "";
+			diameterTextinputSphere.text = "";
+			areaTextinputSphere.text = "";
+			circumferenceTextinputSphere.text = "";
 
 		}
 	}
@@ -79,7 +79,7 @@ loadPage = function(newPage){
 		text: "Radius",
 	}).appendTo(newPage);
 
-	const radiusTextinput = new TextInput({
+	const radiusTextinputSphere = new TextInput({
 		top: '12%', left: '20%', right: '20%',
 		font: fontSizes.textInput,
 		message: 'Radius',
@@ -95,7 +95,7 @@ loadPage = function(newPage){
 		text: "Diameter",
 	}).appendTo(newPage);
 
-	const diameterTextinput = new TextInput({
+	const diameterTextinputSphere = new TextInput({
 		top: '29%', left: '20%', right: '20%',
 		font: fontSizes.textInput,
 		message: 'Diameter',
@@ -110,7 +110,7 @@ loadPage = function(newPage){
 		text: "Volume",
 	}).appendTo(newPage);
 
-	const areaTextinput = new TextInput({
+	const areaTextinputSphere = new TextInput({
 		top: '46%', left: '20%', right: '20%',
 		font: fontSizes.textInput,
 		message: 'Volume',
@@ -125,7 +125,7 @@ loadPage = function(newPage){
 		text: "Surface Area",
 	}).appendTo(newPage);
 
-	const circumferenceTextinput = new TextInput({
+	const circumferenceTextinputSphere = new TextInput({
 		top: '63%', left: '20%', right: '20%',
 		font: fontSizes.textInput,
 		message: 'Surface Area',
