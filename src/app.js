@@ -1,4 +1,4 @@
-const {TextInput, Slider, TextView, contentView, Color, Font, sizeMeasurement, NavigationView, Page, drawer, Button, Canvas, statusBar, devTools, Action, AlertDialog} = require('tabris');
+const {TextInput, Slider, TextView, contentView, Color, Font, sizeMeasurement, NavigationView, Page, drawer, Button, Canvas, statusBar, Action, AlertDialog} = require('tabris');
 
 const fontSizeNavigation = '25px';
 const fontSizeNavigationTitle = '35px';
@@ -15,7 +15,7 @@ newRect = function(attributes, color){
 statusBar.background =  Color.transparent;
 statusBar.displayMode = 'float';
 statusBar.theme = 'light';
-devTools.hideUi();
+//devTools.hideUi();
 
 //loading pages--------------
 
