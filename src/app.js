@@ -22,7 +22,7 @@ devTools.hideUi();
 rectangularPrismPage = new Page({title: 'Rectangular Prism'});
 const rect = require('./rect.js');
 rect.loadPage(rectangularPrismPage);
-
+/*
 triangularPrismPage = new Page({title: 'Trianglular Prism'});
 const triangle = require('./triangle.js');
 triangle.loadPage(triangularPrismPage);
@@ -40,7 +40,8 @@ const help = require('./help.js');
 help.loadPage(helpPage);
 
 let pages = [rectangularPrismPage, triangularPrismPage, cylinderPage, spherePage, helpPage] 
-
+*/
+let pages = [rectangularPrismPage]
 //--------------------------
 navigation = new NavigationView({
 	layoutData: 'stretch', 
