@@ -17,6 +17,10 @@ statusBar.displayMode = 'float';
 statusBar.theme = 'light';
 devTools.hideUi();
 
+var text = "Hello World!";
+
+cordova.plugins.clipboard.copy(text);
+
 //loading pages--------------
 
 rectangularPrismPage = new Page({title: 'Rectangular Prism'});

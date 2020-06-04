@@ -7,13 +7,10 @@ loadPage = function(newPage){
 		font: fontSizes.paragraph,
 		text: "For any questions, concerns, or offers please email me at:",
 	}).appendTo(newPage);
-	new Button({
+	new TextView({
+		centerX: true, top: 'prev() 23',
 		text: "joshbeatty20@gmail.com",
 		font: fontSizes.paragraph,
-		top:'prev()', right:0, left:0,
-		style:'text'
-	}).onSelect(() => {
-		app.launch('mailto:joshbeatty20@gmail.com')
 	}).appendTo(newPage);
 	new TextView({
 		centerX: true, bottom: '50%',

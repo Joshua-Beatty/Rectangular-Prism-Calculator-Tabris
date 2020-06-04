@@ -103,7 +103,7 @@ loadPage = function(newPage){
 		maximum: 15,
 		minimum: 0,
 		selection: percision,
-	}).onSelect(({selection}) => changePercPent(`${selection}`)).appendTo(newPage);
+	}).onSelect(({selection}) => changePercHex(`${selection}`)).appendTo(newPage);
 }
 module.exports = {
 	loadPage: loadPage
