@@ -135,7 +135,7 @@ pages.forEach((item, index) => {
 const infoText = ''
 info = new Action({
 	title: 'Settings',
-	image: '/info.png'
+	image: './info.png'
 }).onSelect(() => alert());
 
 let alert = function(){
