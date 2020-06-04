@@ -62,6 +62,8 @@ navigation.append(pages[0]);
 
 newRect({top:0, height:statusBar.height, right:0, left:0}, navBarColor).appendTo(contentView);
 
+drawer.set({enabled: true});
+
 drawer.append(
 	new TextView({
 		centerX: true, top: statusBar.height,
