@@ -1,14 +1,7 @@
-const Big = require('big.js');
 const {TextInput, Slider, TextView, contentView, Color, Font, sizeMeasurement, NavigationView, Page, drawer, Button, Canvas, Composite} = require('tabris');
 const fontSizes = require('./fontSizes.js');
 
 loadPage = function(newPage){
-	new TextView({
-		centerX: true, top: '1%',
-		font: fontSizes.textView,
-		text: "Width",
-	}).appendTo(newPage);
-	/*
 	new TextView({
 		left: 16, right: 16, top: '1%',
 		font: fontSizes.paragraph,
@@ -20,13 +13,13 @@ loadPage = function(newPage){
 		top:'prev()', right:0, left:0,
 		style:'text'
 	}).onSelect(() => {
-		//app.launch('mailto:joshbeatty20@gmail.com')
+		app.launch('mailto:joshbeatty20@gmail.com')
 	}).appendTo(newPage);
 	new TextView({
 		centerX: true, bottom: '50%',
 		font: fontSizes.tiny,
 		text: "V 1.0",
-	}).appendTo(newPage);*/
+	}).appendTo(newPage);
 }
 
 module.exports = {
