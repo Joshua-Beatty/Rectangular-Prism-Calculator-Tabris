@@ -5,10 +5,10 @@ const fontSizes = require('./fontSizes.js');
 loadPage = function(newPage){
 	let height = Big(0);
 	let length = Big(0);
-	let constant = Big(1/2).times(Big(5).times(Big(5).plus(Big(2).times(Big(5).sqrt()))).sqrt())
+	const constant = Big(1/2).times(Big(5).times(Big(5).plus(Big(2).times(Big(5).sqrt()))).sqrt())
 	let percision = 4;
-	let changing = false;
-	let messageColorNew = new Color(120, 120, 120);
+	const changing = false;
+	const messageColorNew = new Color(120, 120, 120);
 
 	changeValuesPent = function(n, id) {
 		if(!n){
@@ -21,7 +21,7 @@ loadPage = function(newPage){
 			case 2:
 			height = Big(n);
 			break;
-		} 
+		}
 		changeAnswersPent()
 	}
 

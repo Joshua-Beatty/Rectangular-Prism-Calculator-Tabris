@@ -6,8 +6,8 @@ loadPage = function(newPage){
 	let height = Big(0);
 	let length = Big(0);
 	let percision = 4;
-	let changing = false;
-	let messageColorNew = new Color(120, 120, 120);
+	const changing = false;
+	const messageColorNew = new Color(120, 120, 120);
 
 	changeValuesHex = function(n, id) {
 		if(!n){
@@ -20,7 +20,7 @@ loadPage = function(newPage){
 			case 2:
 			height = Big(n);
 			break;
-		} 
+		}
 		changeAnswersHex()
 	}
 

@@ -1,17 +1,16 @@
 const Big = require('decimal.js');
-const {TextInput, Slider, TextView, contentView, Color, Font, sizeMeasurement, NavigationView, Page, drawer, Button, Canvas} = require('tabris');
+const {TextInput, Slider, TextView, Color,} = require('tabris');
 const fontSizes = require('./fontSizes.js');
 
-loadPage = function(newPage){
+const loadPage = function(newPage){
 	let sideA = Big(0);
 	let sideB = Big(0);
 	let sideC = Big(0);
 	let height = Big(0);
 	let percision = 4;
-	let changing = false;
-	let messageColorNew = new Color(120, 120, 120);
+	const messageColorNew = new Color(120, 120, 120);
 
-	changeValuesTriangle = function(n, id) {
+	const changeValuesTriangle = function(n, id) {
 		if(!n){
 			n = 0;
 		}
@@ -28,11 +27,11 @@ loadPage = function(newPage){
 			case 4:
 			height = Big(n);
 			break;
-		} 
+		}
 		changeAnswersTriangle()
 	}
 
-	changeAnswersTriangle = function(){
+	const changeAnswersTriangle = function(){
 		if(!height.isZero() && !sideA.isZero() && !sideB.isZero() && !sideC.isZero()){
 			volumeTextViewTriangle.text = height.times(1/4).times((
 				sideA.pow(4).times(-1)
@@ -43,7 +42,7 @@ loadPage = function(newPage){
 				.plus(sideC.pow(4).times(-1))
 				).sqrt()).toFixed(percision) * 1;
 
-			let p = sideA.plus(sideB).plus(sideC).times(.5);
+			const p = sideA.plus(sideB).plus(sideC).times(.5);
 			surfaceAreaTextViewTriangle.text = p.times(p.minus(sideA)).times(p.minus(sideB)).times(p.minus(sideC)).sqrt().times(2).plus(sideA.times(height)).plus(sideB.times(height)).plus(sideC.times(height))
 			.toFixed(percision) * 1;
 		} else {
@@ -51,7 +50,7 @@ loadPage = function(newPage){
 			volumeTextViewTriangle.text = '0';
 		}
 	}
-	changePercTriangle = function(n){
+	const changePercTriangle = function(n){
 		percision = Number(n);
 		percisionText.text = `Percision: ${percision}`;
 		changeAnswersTriangle();
@@ -63,7 +62,7 @@ loadPage = function(newPage){
 		text: "Side A",
 	}).appendTo(newPage);
 
-	const sideATextinput = new TextInput({
+	new TextInput({
 		top: '7%', left: '20%', right: '20%',
 		font: fontSizes.textInput,
 		message: 'Side A',
@@ -79,7 +78,7 @@ loadPage = function(newPage){
 		text: "Side B",
 	}).appendTo(newPage);
 
-	const sideBTextinput = new TextInput({
+	new TextInput({
 		top: '21%', left: '20%', right: '20%',
 		font: fontSizes.textInput,
 		message: 'Side B',
@@ -94,7 +93,7 @@ loadPage = function(newPage){
 		text: "Side C",
 	}).appendTo(newPage);
 
-	const sideCTextinput = new TextInput({
+	new TextInput({
 		top: '35%', left: '20%', right: '20%',
 		font: fontSizes.textInput,
 		message: 'Side C',
@@ -109,7 +108,7 @@ loadPage = function(newPage){
 		text: "Height",
 	}).appendTo(newPage);
 
-	const heightTextinput = new TextInput({
+	new TextInput({
 		top: '49%', left: '20%', right: '20%',
 		font: fontSizes.textInput,
 		message: 'Height',
@@ -125,7 +124,7 @@ loadPage = function(newPage){
 		text: "Volume",
 	}).appendTo(newPage);
 
-	volumeTextViewTriangle = new TextView({
+	const volumeTextViewTriangle = new TextView({
 		centerX: true, top: '63%',
 		font: fontSizes.textView,
 		text: "0",
@@ -137,7 +136,7 @@ loadPage = function(newPage){
 		text: "Surface Area",
 	}).appendTo(newPage);
 
-	surfaceAreaTextViewTriangle = new TextView({
+	const surfaceAreaTextViewTriangle = new TextView({
 		centerX: true, top: '77%',
 		font: fontSizes.textView,
 		text: "0",

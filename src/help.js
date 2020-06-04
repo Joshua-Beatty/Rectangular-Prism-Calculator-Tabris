@@ -13,7 +13,7 @@ loadPage = function(newPage){
 		font: fontSizes.paragraph,
 		top:'prev()', right:0, left:0,
 		style:'text'
-	}).onSelect(function(){
+	}).onSelect(() => {
 		app.launch('mailto:joshbeatty20@gmail.com')
 	}).appendTo(newPage);
 	new TextView({

@@ -42,17 +42,16 @@ cylinder.loadPage(cylinderPage);
 spherePage = new Page({title: 'Sphere'});
 const sphere = require('./sphere.js');
 sphere.loadPage(spherePage);
-/*
+
 helpPage = new Page({title: 'Support'});
 const help = require('./help.js');
 help.loadPage(helpPage);
 
 let pages = [rectangularPrismPage, triangularPrismPage, hexPrismPage, pentPrismPage, cylinderPage, spherePage, helpPage]
-*/
-let pages = [rectangularPrismPage, triangularPrismPage, hexPrismPage, pentPrismPage, cylinderPage, spherePage]
+
 //--------------------------
 navigation = new NavigationView({
-	layoutData: 'stretch', 
+	layoutData: 'stretch',
 	top: statusBar.height,
 	drawerActionVisible: true,
 	titleTextColor: Color.black,
@@ -78,14 +77,14 @@ hLColor = new Color(200,200,200);
 newRect(hLAttributes, hLColor).appendTo(drawer);
 
 hLAttributes = {top:'prev()', height:1, right:0, left:0};
-pages.forEach(function (item, index) {
+pages.forEach((item, index) => {
 	if(index == 2){
 		new Button({
 			text: item.title,
 			font: fontSizeNavigation,
 			top:'prev()', right:0, left:0,
 			style:'text'
-		}).onSelect(function(){
+		}).onSelect(() => {
 			navigation.pages().detach();
 			navigation.append(pages[index]);
 			drawer.close();
@@ -103,7 +102,7 @@ pages.forEach(function (item, index) {
 			font: fontSizeNavigation,
 			top:'prev()', right:0, left:0,
 			style:'text'
-		}).onSelect(function(){
+		}).onSelect(() => {
 			navigation.pages().detach();
 			navigation.append(pages[index]);
 			drawer.close();
@@ -122,7 +121,7 @@ pages.forEach(function (item, index) {
 			font: fontSizeNavigation,
 			top:'prev()', right:0, left:0,
 			style:'text'
-		}).onSelect(function(){
+		}).onSelect(() => {
 			navigation.pages().detach();
 			navigation.append(pages[index]);
 			drawer.close();
@@ -133,7 +132,7 @@ pages.forEach(function (item, index) {
 	newRect(hLAttributes, hLColor).appendTo(drawer);
 });
 
-let infoText = ''
+const infoText = ''
 info = new Action({
 	title: 'Settings',
 	image: '/info.png'

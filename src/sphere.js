@@ -3,16 +3,16 @@ const {TextInput, Slider, TextView, newPage, Color, Font, sizeMeasurement, Navig
 const fontSizes = require('./fontSizes.js');
 
 loadPage = function(newPage){
-	
+
 	let radius = Big(0);
-	let diameter = Big(0);
-	let area = Big(0);
-	let circumference = Big(0);
-	let fullPi = "3.14159265358979323846264338327950288";
+	const diameter = Big(0);
+	const area = Big(0);
+	const circumference = Big(0);
+	const fullPi = "3.14159265358979323846264338327950288";
 	let pi = Big(3.14);
 	let percision = 4;
-	let changing = false;
-	let messageColorNew = new Color(120, 120, 120);
+	const changing = false;
+	const messageColorNew = new Color(120, 120, 120);
 
 	let idG = null;
 	let nG = null;
