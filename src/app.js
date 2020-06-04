@@ -44,7 +44,7 @@ const sphere = require('./sphere.js');
 sphere.loadPage(spherePage);
 
 helpPage = new Page({title: 'Support'});
-const helpthing = require('./thing.js');
+const helpthing = require('./help.js');
 helpthing.loadPage(helpPage);
 
 let pages = [rectangularPrismPage, triangularPrismPage, hexPrismPage, pentPrismPage, cylinderPage, spherePage, helpPage]
