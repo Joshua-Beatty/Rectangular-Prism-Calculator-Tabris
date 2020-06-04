@@ -34,14 +34,14 @@ cylinder.loadPage(cylinderPage);
 spherePage = new Page({title: 'Sphere'});
 const sphere = require('./sphere.js');
 sphere.loadPage(spherePage);
-
+*/
 helpPage = new Page({title: 'Support'});
 const help = require('./help.js');
 help.loadPage(helpPage);
 
-let pages = [rectangularPrismPage, triangularPrismPage, cylinderPage, spherePage, helpPage] 
-*/
-let pages = [rectangularPrismPage]
+//let pages = [rectangularPrismPage, triangularPrismPage, cylinderPage, spherePage, helpPage] 
+
+let pages = [rectangularPrismPage, helpPage]
 //--------------------------
 navigation = new NavigationView({
 	layoutData: 'stretch', 
