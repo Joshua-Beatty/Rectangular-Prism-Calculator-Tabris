@@ -4,6 +4,12 @@ const fontSizes = require('./fontSizes.js');
 
 loadPage = function(newPage){
 	new TextView({
+		centerX: true, top: '1%',
+		font: fontSizes.textView,
+		text: "Width",
+	}).appendTo(newPage);
+	/*
+	new TextView({
 		left: 16, right: 16, top: '1%',
 		font: fontSizes.paragraph,
 		text: "For any questions, concerns, or offers please email me at:",
@@ -20,7 +26,7 @@ loadPage = function(newPage){
 		centerX: true, bottom: '50%',
 		font: fontSizes.tiny,
 		text: "V 1.0",
-	}).appendTo(newPage);
+	}).appendTo(newPage);*/
 }
 
 module.exports = {
