@@ -1,5 +1,5 @@
 const Big = require('big.js');
-const {TextInput, Slider, TextView, contentView, Color, Font, sizeMeasurement, NavigationView, Page, drawer, Button, Canvas, Composite, app} = require('tabris');
+const {TextInput, Slider, TextView, contentView, Color, Font, sizeMeasurement, NavigationView, Page, drawer, Button, Canvas, Composite} = require('tabris');
 const fontSizes = require('./fontSizes.js');
 
 loadPage = function(newPage){
