@@ -14,7 +14,7 @@ loadPage = function(newPage){
 		top:'prev()', right:0, left:0,
 		style:'text'
 	}).onSelect(() => {
-		app.launch('mailto:joshbeatty20@gmail.com')
+		//app.launch('mailto:joshbeatty20@gmail.com')
 	}).appendTo(newPage);
 	new TextView({
 		centerX: true, bottom: '50%',
