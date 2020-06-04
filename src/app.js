@@ -22,11 +22,11 @@ devTools.hideUi();
 rectangularPrismPage = new Page({title: 'Rectangular Prism'});
 const rect = require('./rect.js');
 rect.loadPage(rectangularPrismPage);
-/*
+
 triangularPrismPage = new Page({title: 'Trianglular Prism'});
 const triangle = require('./triangle.js');
 triangle.loadPage(triangularPrismPage);
-
+/*
 cylinderPage = new Page({title: 'Cylinder'});
 const cylinder = require('./cylinder.js');
 cylinder.loadPage(cylinderPage);
@@ -34,14 +34,14 @@ cylinder.loadPage(cylinderPage);
 spherePage = new Page({title: 'Sphere'});
 const sphere = require('./sphere.js');
 sphere.loadPage(spherePage);
-*/
+
 helpPage = new Page({title: 'Support'});
 const help = require('./help.js');
 help.loadPage(helpPage);
-
+*/
 //let pages = [rectangularPrismPage, triangularPrismPage, cylinderPage, spherePage, helpPage] 
 
-let pages = [rectangularPrismPage, helpPage]
+let pages = [rectangularPrismPage, triangularPrismPage]
 //--------------------------
 navigation = new NavigationView({
 	layoutData: 'stretch', 
