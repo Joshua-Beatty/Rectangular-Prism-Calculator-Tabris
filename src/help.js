@@ -20,14 +20,14 @@ loadPage = function(newPage){
 		try {
 			cordova.plugins.clipboard.copy(text);
 	new AlertDialog({
-		title: 'Coppied email to clipboard',
+		title: 'Email coppied to clipboard',
 		buttons: {ok: 'OK'}
 	}).open();
 
 		}
 		catch(err) {
 	new AlertDialog({
-		title: 'Could not coppy email to clipboard',
+		title: 'Email could not be coppied to clipboard',
 		buttons: {ok: 'OK'}
 	}).open();
 

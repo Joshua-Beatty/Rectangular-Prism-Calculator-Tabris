@@ -47,7 +47,7 @@ helpPage = new Page({title: 'Support'});
 const helpthing = require('./help.js');
 helpthing.loadPage(helpPage);
 
-let pages = [rectangularPrismPage, triangularPrismPage, hexPrismPage, pentPrismPage, cylinderPage, spherePage, helpPage]
+let pages = [rectangularPrismPage, triangularPrismPage, pentPrismPage, hexPrismPage, cylinderPage, spherePage, helpPage]
 
 //--------------------------
 navigation = new NavigationView({
