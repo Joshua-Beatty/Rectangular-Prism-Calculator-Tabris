@@ -80,7 +80,7 @@ newRect(hLAttributes, hLColor).appendTo(drawer);
 
 hLAttributes = {top:'prev()', height:1, right:0, left:0};
 pages.forEach((item, index) => {
-	if(index == 2){
+	if(index == 3){
 		new Button({
 			text: item.title,
 			font: fontSizeNavigation,
@@ -98,7 +98,7 @@ pages.forEach((item, index) => {
 				}).open();
 			}
 		}).appendTo(drawer);
-	}else if(index == 3){
+	}else if(index == 2){
 		new Button({
 			text: item.title,
 			font: fontSizeNavigation,
