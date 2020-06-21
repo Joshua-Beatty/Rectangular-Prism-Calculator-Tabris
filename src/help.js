@@ -36,7 +36,7 @@ loadPage = function(newPage){
 	new TextView({
 		centerX: true, bottom: '50%',
 		font: fontSizes.tiny,
-		text: "V 1.1",
+		text: "V 1.2",
 	}).appendTo(newPage);
 }
 
